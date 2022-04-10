@@ -3,7 +3,10 @@ package com.eyehail.readingdataweather
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.ImageView
 import android.widget.TextView
+import com.eyehail.readingdataweather.Api.GlideImageLoader
+import com.eyehail.readingdataweather.Api.ImageLoader
 import com.eyehail.readingdataweather.Api.TheWeatherApiService
 import com.eyehail.readingdataweather.Model.WeatherData
 import retrofit2.Call
@@ -28,6 +31,12 @@ class MainActivity : AppCompatActivity() {
     private val serverResponseWeather : TextView by lazy {
         findViewById(R.id.weather)
     }
+    private val profileImageView: ImageView by lazy {
+        findViewById(R.id.image)
+    }
+    private val imageLoader: ImageLoader by lazy {
+        GlideImageLoader(this)
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)
@@ -51,6 +60,14 @@ class MainActivity : AppCompatActivity() {
                     serverResponseCity.text = cityResponse
                     val temperatureResponse = weatherResults?.main?.temp ?: "No Temperature"
                     serverResponseWeather.text = temperatureResponse
+                    Log.e("Main Activity", "https://openweathermap.org/img/wn/${weatherResults?.weather?.get(0)}@2x.png")
+                    val firstImageUrl = "https://openweathermap.org/img/wn/${weatherResults?.weather?.firstOrNull()?.icon}@2x.png"
+                    if (!firstImageUrl.isBlank()) {
+                        imageLoader.loadImage(firstImageUrl, profileImageView)
+                    } else {
+                        Log.d("Main Activity", "Missing Image Url")
+                    }
+
 
                 } else {
                     Log.e("Main Activity", "Failed to get search results \n" +
