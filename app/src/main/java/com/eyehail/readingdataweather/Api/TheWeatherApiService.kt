@@ -6,6 +6,6 @@ import retrofit2.http.GET
 
 interface TheWeatherApiService {
     //change token and lat and lon
-    @GET("weather?lat=00&lon=00&appid={token}")
+    @GET("weather?lat=62.035454&lon=129.675476&appid=4e9f768bcdb68a62161bd4ed2432db87")
     fun returnWeather(): Call<WeatherData>
 }
