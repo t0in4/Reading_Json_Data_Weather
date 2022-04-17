@@ -19,4 +19,6 @@ The steps are as follows:
 9. Handle the successful server response.
 10. Handle the different failure scenarios.
 
-TO DO: Update to support weather icon image
+example of json:
+{"coord":{"lon":129.6755,"lat":62.0355},"weather":[{"id":800,"main":"Clear","description":"clear sky","icon":"01d"}],"base":"stations","main":{"temp":275.08,"feels_like":270.15,"temp_min":275.08,"temp_max":275.08,"pressure":1013,"humidity":44},"visibility":10000,"wind":{"speed":6,"deg":350},"clouds":{"all":0},"dt":1649574116,"sys":{"type":1,"id":8854,"country":"RU","sunrise":1649535319,"sunset":1649586584},"timezone":32400,"id":2013159,"name":"Yakutsk","cod":200}
+
